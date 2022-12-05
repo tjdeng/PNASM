@@ -1,0 +1,57 @@
+#support datasets:
+#  nasbenchasr: timit.
+bench_name: nasbenchasr
+dataset: timit
+
+data_path: data
+
+#nasbenchasr:
+#  cell
+search_space_type: cell
+
+# ----------------------------Training settings --------------------------------
+search_type: search_steps
+
+search_time: float('inf')
+# nasbenchasr: target_steps: the number of sampled true archs.
+target_steps: 300
+rand_seed: -1
+loops_if_rand: 20
+workers: 2
+steps_each_record: 20
+
+# --------------------- LSTM-based agent (controller) ---------------------------
+search_strategy: rl
+# the number of Archs in one batch. note that ensure: episodes * batchs_per_epoch = 100
+episodes: 20
+update_controller_algo: ppo
+update_controller_iters: 5
+clip_ratio: 0.2
+
+controller_epochs: 20
+batchs_per_epoch: 5
+controller_lr: 0.001
+# 1e-3
+controller_weight_decay: 0.001
+# 1e-8
+controller_eps: 0.00000001
+
+# ----------------------- Predictor -----------------------------------------
+# options: True or False
+is_predictor: True
+
+#xgboost for nasbenchasr
+predictor_type: xgb
+
+# options: None, all, fixed_k, adaptive.
+predictor_mode: adaptive
+fixedk: 2
+
+is_ensemble: True
+num_ensemble: 3
+
+# the threshold of the adaptive method.
+theta: 0.1
+
+# ----------------------- log path -----------------------------------
+log_path: ./outputs
