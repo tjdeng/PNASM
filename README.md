@@ -22,10 +22,10 @@ pip install -r requirements.txt
 ```
 
 Data: please download the data of natsbench-tss (expansion of nasbench201) [NATS-tss-v1_0-3ffb9-simple](https://drive.google.com/file/d/17_saCsj_krKjlCBLOJEpNtzPXArMCqxU/view?usp=sharing) and 
-[nasbenchasr](https://github.com/SamsungLabs/nb-asr/archive/refs/tags/v1.1.0.tar.gz). Then unzip them and put them into the directory: `data`.
+[nasbenchasr](https://github.com/SamsungLabs/nb-asr/archive/refs/tags/v1.1.0.tar.gz). Then unzip them and put them into the directory: `./data`.
 
 ## Running the models
-###nasbench201:  
+### nasbench201:  
 The file `./exps/time_budget_config.yaml` includes all experimental settings of nasbench201. 
 Set two fields `dataset` and `search_time` to run experiments on three different tasks of nasbench201.
 Set the field `predictor_mode` to `fixed_k` to run the model (PNASM):
@@ -38,7 +38,7 @@ Set the field `predictor_mode` to `adaptive` to run the model (PNASM-A):
 python ./exps/main.py --config_file ./exps/time_budget_config.yaml
 ```
 
-###nasbenchasr:
+### nasbenchasr: 
 The file `./exps/search_steps_config.yaml` includes all experimental settings of nasbenchasr. 
 The field `target_steps` means if the number of sampled ground-truth architectures reaches `target_steps`, the experiment ends. 
 Set the field `predictor_mode` to `fixed_k` to run the model (PNASM):
