@@ -17,7 +17,7 @@ from exps.utils import get_config_from_yaml, record_best_arch_info, record_avg_i
 
 
 def build_args():
-    parser = argparse.ArgumentParser(description='PNASM')
+    parser = argparse.ArgumentParser(description='RPNASM')
     register_default_args(parser)
     args = parser.parse_args()
 

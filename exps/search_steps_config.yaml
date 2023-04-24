@@ -13,7 +13,7 @@ search_space_type: cell
 search_type: search_steps
 
 search_time: float('inf')
-# nasbenchasr: target_steps: the number of sampled true archs.
+# target_steps: the number of sampled true archs.
 target_steps: 300
 rand_seed: -1
 loops_if_rand: 20
@@ -22,14 +22,17 @@ steps_each_record: 20
 
 # --------------------- LSTM-based agent (controller) ---------------------------
 search_strategy: rl
-# the number of Archs in one batch. note that ensure: episodes * batchs_per_epoch = 100
+# the number of Archs in one batch. # of episodes = batch size.
 episodes: 20
+# the number of batch per epoch. note that ensure: batchs_per_epoch * episodes = 100.
+batchs_per_epoch: 10
+# options: update_controller_algo = ppo and update_controller_iters = 5 (default) or
+# update_controller_algo = pg and update_controller_iters = 1.
 update_controller_algo: ppo
 update_controller_iters: 5
 clip_ratio: 0.2
 
 controller_epochs: 20
-batchs_per_epoch: 5
 controller_lr: 0.001
 # 1e-3
 controller_weight_decay: 0.001

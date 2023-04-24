@@ -1,19 +1,15 @@
-# PNASM: HOW PREDICTORS AFFECT SEARCH STRATEGIES IN NEURAL ARCHITECTURE SEARCH?
+# RPNASM: How Predictors Affect the RL-based Search Strategy in Neural Architecture Search?
 
 ## Abstract
-Predictor-based Neural Architecture Search is an important topic since it can efficiently reduce the computational cost of evaluating candidate architectures. Most
-existing predictor-based NAS algorithms aim to design different predictors to improve the prediction performance. Unfortunately, even a promising performance
-predictor may suffer from the accuracy decline due to long-term and continuous
-usage, thus leading to the degraded performance of the search strategy. That naturally gives rise to the following problems: how predictors affect search strategies
-and how to appropriately use the predictor? In this paper, we take reinforcement
-learning (RL) based search strategy to study theoretically and empirically the impact of predictors on search strategies. We first formulate a predictor-RL-based
-NAS algorithm as model-based RL and analyze it with a guarantee of monotonic
-improvement at each trail. Then, based on this analysis, we propose a simple procedure of predictor usage, named *mixed batch*, which contains ground-truth data
-and prediction data. The proposed procedure can efficiently reduce the impact of
-predictor errors on search strategies with maintaining performance growth. Our algorithm, Predictor-based Neural Architecture Search with Mixed batch (PNASM),
-outperforms traditional NAS algorithms and prior state-of-the-art predictor-based
-NAS algorithms on three NAS-Bench-201 tasks and one NAS-Bench-ASR task.
-
+Predictor-based Neural Architecture Search is an important topic since it can efficiently 
+reduce the computational cost of evaluating candidate architectures. Most existing predictor-based 
+NAS algorithms aim to design different predictors to improve prediction performance. 
+Unfortunately, even a promising performance predictor may suffer from the accuracy decline due to 
+long-term and continuous usage, thus leading to the degraded performance of the search strategy. 
+That naturally gives rise to the following problems: how do predictors affect search strategies and 
+how to efficiently use the predictor? In this paper, we take Reinforcement Learning (RL) based search strategy 
+to study  theoretically and empirically the impact of predictors on search strategies. We first formulate an RL-Predictor-based NAS algorithm as model-based RL and analyze it with a guarantee of monotonic improvement. Then, based on this analysis, we propose a simple procedure of predictor usage, named $mixed\ batch$, which contains ground-truth data and prediction data in a batch. 
+The proposed procedure can efficiently reduce the impact of predictor errors on the RL-based search strategy with maintaining performance growth. Our algorithm, RL-Predictor-based Neural Architecture Search with Mixed batch (RPNASM), outperforms traditional NAS algorithms and prior state-of-the-art predictor-based NAS algorithms on three NAS-Bench-201 tasks and one NAS-Bench-ASR task.
 ## Requirements
 Environments: ensure that Python3.6, PyTorch 1.1.0, and CUDA 9.0 are installed. Then run:
 ```shell
@@ -41,12 +37,12 @@ python ./exps/main.py --config_file ./exps/time_budget_config.yaml
 ### nasbenchasr: 
 The file `./exps/search_steps_config.yaml` includes all experimental settings of nasbenchasr. 
 The field `target_steps` means if the number of sampled ground-truth architectures reaches `target_steps`, the experiment ends. 
-Set the field `predictor_mode` to `fixed_k` to run the model (PNASM):
+Set the field `predictor_mode` to `fixed_k` to run the model (RPNASM):
 ```python
 python ./exps/main.py --config_file ./exps/search_steps_config.yaml
 ```
 
-Set the field `predictor_mode` to `adaptive` to run the model (PNASM-A):
+Set the field `predictor_mode` to `adaptive` to run the model (RPNASM-A):
 ```python
 python ./exps/main.py --config_file ./exps/search_steps_config.yaml
 ```
